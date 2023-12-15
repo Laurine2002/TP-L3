@@ -36,7 +36,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 export default {
   data() {
@@ -46,13 +46,13 @@ export default {
   },
   mounted() {
     // Remplacez l'URL par l'endpoint correct pour récupérer les absences de l'utilisateur
-    // axios.get('http://127.0.0.1:8000/user/view-absences')
-    //   .then(response => {
-    //     this.absences = response.data;
-    //   })
-    //   .catch(error => {
-    //     console.error('Erreur lors de la récupération des absences', error);
-    //   });
+    axios.get('http://127.0.0.1:8000/api/user/view-absences')
+      .then(response => {
+        this.absences = response.data;
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des absences', error);
+      });
   },
 };
 </script>

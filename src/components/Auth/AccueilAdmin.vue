@@ -94,22 +94,22 @@
       // console.log('Je suis la')
     },
     methods:{
-      getUSers(){
-        axios.get('http://127.0.0.1:8000/admin/create-user').then(res =>{
-          this.uSers = res.data.uSers
-          // console.log(this.accueilSupers  ) 
-        })
-        .catch(function(error){
-              console.log('je suis lerreur',error)
+      // getUSers(){
+      //   axios.get('http://127.0.0.1:8000/api/admin/create-user').then(res =>{
+      //     this.uSers = res.data.uSers
+      //     // console.log(this.accueilSupers  ) 
+      //   })
+      //   .catch(function(error){
+      //         console.log('je suis lerreur',error)
             
-            });
-      },
+      //       });
+      // },
       deleteUser(){
         var mythis = this;
         // console.log(userId)
         if(confirm('Etes-vous sur de Vouloir Supprimer?')){
           // console.log(this.accueilSupers)
-          axios.delete('http://127.0.0.1:8000/admin/delete-user/${userId}')
+          axios.delete('http://127.0.0.1:8000/api/admin/delete-user/${userId}')
           .then(res =>{
 
             alert(res.data.message);

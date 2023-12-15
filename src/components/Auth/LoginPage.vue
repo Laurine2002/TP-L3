@@ -89,7 +89,7 @@ import axios from 'axios'
   </script> -->
 
 <script>
-  // import axios from 'axios'
+  import axios from 'axios'
   export default{
     data(){
       return {
@@ -98,21 +98,21 @@ import axios from 'axios'
       };
     },
     methods:{
-      // async handleSubmit(){
-      //   await axios.post('http://127.0.0.1:8000/login',{
-      //     email: this.email,
-      //     password: this.password,
-      //   })
-      //   .then(response => {
-      //     // Gérez la réponse du serveur après une connexion réussie
-      //     console.log(response.data);
-      //     alert(response.data.message);
-      //   })
-      //   .catch(error => {
-      //     // Gérez les erreurs, par exemple afficher un message d'erreur à l'utilisateur
-      //     console.error('Erreur de connexion:', error);
-      //   });
-      // },
+      async handleSubmit(){
+        await axios.post('http://127.0.0.1:8000/api/login',{
+          email: this.email,
+          password: this.password,
+        })
+        .then(response => {
+          // Gérez la réponse du serveur après une connexion réussie
+          console.log(response.data);
+          alert(response.data.message);
+        })
+        .catch(error => {
+          // Gérez les erreurs, par exemple afficher un message d'erreur à l'utilisateur
+          console.error('Erreur de connexion:', error);
+        });
+      },
     }
   }
 

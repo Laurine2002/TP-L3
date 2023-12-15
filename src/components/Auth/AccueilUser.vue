@@ -41,7 +41,7 @@
 
 <script>
 
-  // import axios from 'axios'
+  import axios from 'axios'
 
   export default{
     name: 'uSers',
@@ -55,14 +55,14 @@
       this.getUSers();
       // console.log('Je suis la')
     },
-    // methods:{
-    //   getUSers(){
-    //     axios.get('http://127.0.0.1:8000/admin/create-user').then(res =>{
-    //       this.uSers = res.data.uSers
-    //       // console.log(this.accueilSupers  ) 
-    //     });
-    //   }
-    // },
+    methods:{
+      getUSers(){
+        axios.get('http://127.0.0.1:8000/api/admin/create-user').then(res =>{
+          this.uSers = res.data.uSers
+          // console.log(this.accueilSupers  ) 
+        });
+      }
+    },
   }
 
 </script>

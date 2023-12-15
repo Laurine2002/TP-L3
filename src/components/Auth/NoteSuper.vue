@@ -50,7 +50,7 @@
   </template>
   
   <script>
-//   import axios from 'axios'
+  import axios from 'axios'
   export default {
     data() {
       return {
@@ -60,22 +60,22 @@
       };
     },
     methods: {
-    //   sendEmail() {
-    //     // Utilisez Axios pour envoyer les données au serveur
-    //     axios.post('http://127.0.0.1:8000/admin/send-notification-to-superviseur', {
-    //       to: this.toEmail,
-    //       subject: this.subject,
-    //       message: this.message
-    //     })
-    //     .then(response => {
-    //       console.log('E-mail envoyé avec succès', response);
-    //       // Ajoutez la logique supplémentaire en fonction de votre application
-    //     })
-    //     .catch(error => {
-    //       console.error('Erreur lors de l\'envoi de l\'e-mail', error);
-    //       // Gérez les erreurs ici
-    //     });
-    //   }
+      sendEmail() {
+        // Utilisez Axios pour envoyer les données au serveur
+        axios.post('http://127.0.0.1:8000/api/admin/send-notification-to-superviseur', {
+          to: this.toEmail,
+          subject: this.subject,
+          message: this.message
+        })
+        .then(response => {
+          console.log('E-mail envoyé avec succès', response);
+          // Ajoutez la logique supplémentaire en fonction de votre application
+        })
+        .catch(error => {
+          console.error('Erreur lors de l\'envoi de l\'e-mail', error);
+          // Gérez les erreurs ici
+        });
+      }
     }
   };
   </script>

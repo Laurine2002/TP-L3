@@ -29,7 +29,7 @@
 
                         <div class="form-outline mb-4">
                             <i class="fas fa-lock"></i>
-                        <input type="password" v-model="model.user.pasword" id="typePasswordX-2" class="form-control form-control-lg" />
+                        <input type="password" v-model="model.user.password" id="typePasswordX-2" class="form-control form-control-lg" />
                         <label class="form-label" name="password" for="typePasswordX-2"> Password</label>
                         </div>
 
@@ -81,7 +81,7 @@
 
         getUserData(){
             var mythis = this;
-            axios.get('http://127.0.0.1:8000/admin/update-user/${this.userId}')
+            axios.get('http://127.0.0.1:8000/api/admin/update-user/${this.userId}')
                 .then(res =>{
                     console.log(res.data.user);
 
@@ -101,7 +101,7 @@
         updateUser(){
 
                 var mythis = this;
-                axios.put('http://127.0.0.1:8000/admin/update-user/${userId}', this.model.user)
+                axios.put('http://127.0.0.1:8000/api/admin/update-user/${userId}', this.model.user)
                 .then(res =>{
                     console.log(res.data)
                     alert(res.data.message);
