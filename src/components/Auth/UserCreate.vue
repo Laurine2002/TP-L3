@@ -30,6 +30,12 @@
                             <label class="form-label" name="matricule" for="typeTextX-2"> <i class="far fa-user"></i> Matricule</label>
                             </div>
 
+                            <div class="form-outline mb-3">
+                            
+                            <input type="text" v-model="model.user.role" id="typeTextX-2" class="form-control form-control-lg" />
+                            <label class="form-label" name="role" for="typeTextX-2"> <i class="far fa-user"></i> Role</label>
+                            </div>
+
                             <div class="form-outline mb-4">
                                 
                             <input type="email" v-model="model.user.email" id="typeEmailX-2" class="form-control form-control-lg" />
@@ -80,6 +86,7 @@
                     user:{
                         name:'',
                         matricule:'',
+                        role:'',
                         email:'',
                         password:'',
                         photo:null
@@ -104,6 +111,7 @@
                     this.model.user ={
                         name:'',
                         matricule:'',
+                        role:'',
                         email:'',
                         password:'',
                         photo:''
