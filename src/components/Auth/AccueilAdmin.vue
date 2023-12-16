@@ -45,8 +45,9 @@
         <table class="table table-striped table-hover container-fluid pr-5 p-2 ms-4 mt-5">
         <thead>
           <tr>
-            <th scope="col">Matricule</th>
+            <th scope="col">id</th>
             <th scope="col">Name</th>
+            <th scope="col">Matricule</th>
             <th scope="col">Role</th>
             <th scope="col">Email</th>
             <th scope="col">Action</th>
@@ -56,6 +57,7 @@
           <tr v-for="(uSer, index) in this.uSers" :key="index">
             <th scope="row">{{ uSer.id }}</th>
             <td>{{ uSer.name }}</td>
+            <td>{{ uSer.matricule }}</td>
             <td>{{ uSer.role }}</td>
             <td>{{ uSer.email }}</td>
             <td>
@@ -94,16 +96,16 @@
       // console.log('Je suis la')
     },
     methods:{
-      // getUSers(){
-      //   axios.get('http://127.0.0.1:8000/api/admin/create-user').then(res =>{
-      //     this.uSers = res.data.uSers
-      //     // console.log(this.accueilSupers  ) 
-      //   })
-      //   .catch(function(error){
-      //         console.log('je suis lerreur',error)
+      getUSers(){
+        axios.get('http://127.0.0.1:8000/api/admin/create-user').then(res =>{
+          this.uSers = res.data.uSers
+          // console.log(this.accueilSupers  ) 
+        })
+        .catch(function(error){
+              console.log('je suis lerreur',error)
             
-      //       });
-      // },
+            });
+      },
       deleteUser(){
         var mythis = this;
         // console.log(userId)
@@ -144,3 +146,11 @@
   }
 
 </script>
+
+<style>
+  .card-header{
+    
+    margin-bottom: -1px;
+    margin-top: 25px;
+  }
+</style>
