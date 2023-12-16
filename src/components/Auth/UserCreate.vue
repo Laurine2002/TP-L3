@@ -32,7 +32,7 @@
 
                             <div class="form-outline mb-3">
                             
-                            <input type="text" v-model="model.user.role" id="typeTextX-2" class="form-control form-control-lg" />
+                            <input type="text" v-model="model.user.role" placeholder="User, Superviseur ou Administrateur" id="typeTextX-2" class="form-control form-control-lg" />
                             <label class="form-label" name="role" for="typeTextX-2"> <i class="far fa-user"></i> Role</label>
                             </div>
 
