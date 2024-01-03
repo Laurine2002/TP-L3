@@ -1,3 +1,4 @@
+
 <template>
     <div class="super/userCreate">
         
@@ -71,8 +72,8 @@
 </template>
 
 <script>
-
-    import axios from 'axios'
+/* eslint-disable */
+    import { saveUser } from '@/services/user.service.js'
 
     export default{
         name:"userCreate",
@@ -100,40 +101,30 @@
                 this.photoFile = event.target.files[0];
             },
             saveUser(){
-
                 var mythis = this;
-                console.log(this.model.user);
-                axios.post('http://127.0.0.1:8000/api/admin/create-user', this.model.user)
-                .then(res =>{
-                    console.log(res.data)
-                    alert(res.data.message);
+                mythis.errorList = []
+                saveUser(this.model.user)
+                .then(
+                    (res) =>{
+                        alert(res.data.message);
 
-                    this.model.user ={
-                        name:'',
-                        matricule:'',
-                        role:'',
-                        email:'',
-                        password:'',
-                        photo:''
-                    }
-                })
-                .catch(function(error){
-                    if (error.response) {
-
-                        if (error.response.status == 422){
-                            mythis.errorList = error.response.data.errors;
-                            this.$router.push('/accueilAdmin');
-                            
+                        this.model.user ={
+                            name:'',
+                            matricule:'',
+                            role:'',
+                            email:'',
+                            password:'',
+                            photo:''
                         }
-
-                        // console.log(error.response.data);
-                        // console.log(error.response.status);
-                        // console.log(error.response.headers);
-                        
-                        } else if (error.request) {
-                        console.log(error.request);
-                        } else {
-                        console.log('Error', error.message);
+                        this.$router.push('/accueilAdmin');
+                    }).catch(function(er){
+                        if(er.response.status == 500){
+                            alert("une erreur au niveau du serveur!")
+                        }else if (er.response.status == 422){
+                            alert("des variables sont manquante!")
+                            mythis.errorList = er.response.data.errors;
+                        }else{
+                            alert("une erreur lors de l'affiche du resultat du serveur!")
                         }
                 });
             },
@@ -141,13 +132,13 @@
                 const formData = new FormData();
                 formData.append('photo', this.photoFile);
 
-                axios.post('http://127.0.0.1:8000/api/admin/create-user', formData)
-                    .then(response => {
-                    this.photoUrl = response.data.url; // Assurez-vous que votre API renvoie l'URL de la photo
-                })
-                .catch(error => {
-                    console.error('Erreur lors du téléchargement de la photo :', error);
-                });
+                // axios.post('http://127.0.0.1:8000/api/admin/create-user', formData)
+                //     .then(response => {
+                //     this.photoUrl = response.data.url;
+                // })
+                // .catch(error => {
+                //     \('Erreur lors du téléchargement de la photo :', error);
+                // });
             },
         }
     }

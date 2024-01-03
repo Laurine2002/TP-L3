@@ -1,16 +1,12 @@
 <template>
     <div class="accueilUser">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-          <li class="nav-item">
-            
-            <router-link class ="nav-link navbar-brand" to ="/#">Voir.Absences</router-link>
-          </li>
           <li class="nav-item">
             <router-link class ="nav-link navbar-brand" to ="/MessageAdmin">Message.A.L'Admin</router-link>
           </li>
     
-          <a class="navbar-brand text-danger" href="#">Deconnexion</a>
+          <a class="navbar-brand btn btn-danger" href="#">Deconnexion</a>
           
           <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -19,51 +15,76 @@
         </div>
       </nav> <br><br>
 
-      <table class="table table-striped table-hover container-fluid pr-5 p-2 ms-4 mt-5">
-        <thead>
-          <tr>
-            <th scope="col">Matricule</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="container-fluid mt-5">
+        <h2 class="text-center">VOICI LA LISTE DE VOS ABSENCES</h2>
+                <!-- <li v-for="absence in absences" :key="absence.id">
+                    {{ absence.date }} - {{ absence.motif }}
+                </li> -->
+            <div class="card text-center">
+              <div class="card-header">
+                Absence du:
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">STATUT: </h5>
+                <p class="card-text">MOTIF: With supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+      </div>
     </div>
 </template>
 
 <script>
 
-  import axios from 'axios'
+import axios from 'axios'
 
-  export default{
-    name: 'uSers',
+export default{
+    // name: 'absences',
     data(){
       return{
-        uSers:[]
+        absences: [] // Initialiser la liste des absences
       }
     },
-    mounted(){
-
-      this.getUSers();
-      // console.log('Je suis la')
+    mounted() {
+        // Appeler la méthode pour récupérer les absences au chargement de la page
+        this.getAbsences();
     },
-    methods:{
-      getUSers(){
-        axios.get('http://127.0.0.1:8000/api/admin/create-user').then(res =>{
-          this.uSers = res.data.uSers
-          // console.log(this.accueilSupers  ) 
-        });
-      }
+    methods: {
+        getAbsences() {
+            // Utiliser Axios pour effectuer une requête GET
+            axios.get('http://127.0.0.1:8000/api/user/view-absences') // Remplacez '/api/absences' par l'URL réelle de votre API
+                .then(response => {
+                    // Mettre à jour la liste des absences avec les données reçues
+                    this.absences = response.data;
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération des absences', error);
+                });
+        }
     },
   }
+
+  // new Vue({
+  //   el: '#app',
+  //   data: {
+  //       absences: [] // Initialiser la liste des absences
+  //   },
+  //   mounted() {
+  //       // Appeler la méthode pour récupérer les absences au chargement de la page
+  //       this.getAbsences();
+  //   },
+  //   methods: {
+  //       getAbsences() {
+  //           // Utiliser Axios pour effectuer une requête GET
+  //           axios.get('/api/absences') // Remplacez '/api/absences' par l'URL réelle de votre API
+  //               .then(response => {
+  //                   // Mettre à jour la liste des absences avec les données reçues
+  //                   this.absences = response.data;
+  //               })
+  //               .catch(error => {
+  //                   console.error('Erreur lors de la récupération des absences', error);
+  //               });
+  //       }
+  //   },
 
 </script>
 

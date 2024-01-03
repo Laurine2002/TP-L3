@@ -4,25 +4,27 @@
           <div class="container-fluid">
             <li class="nav-item">
               
-              <router-link class ="nav-link navbar-brand float-end" to ="/user/register"><i class="fas fa-circle-plus"></i> Add Superviseur</router-link>
-            </li>
-            <li class="nav-item">
-              
               <router-link class ="nav-link navbar-brand float-end" to ="/super/notif"><i class="far fa-bell"></i> Notifier.Superviseur</router-link>
             </li>
 
             
-            <button class ="text-danger float-end" @click="logout">Deconnexion</button>
+           
             
-            <div class="input-group">
-            <div class="form-outline" data-mdb-input-init>
+            <div class="input-group ">
+            
+            <!-- <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+              <i class="fas fa-search"></i>
+            </button> -->
+            <!-- <div class="form-outline" data-mdb-input-init>
               <input type="search" id="form1" class="form-control" />
               <label class="form-label" for="form1">Search</label>
-            </div>
-            <button type="button" class="btn btn-primary" data-mdb-ripple-init>
-              <i class="fas fa-search"></i>
-            </button>
+            </div> -->
           </div>
+
+          <form class="d-flex">
+              
+              <button class ="btn btn-danger me-2" @click="logout">Deconnexion</button>
+          </form>
 
           <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -35,7 +37,7 @@
             <div class="card-header">
               <h5>
                 <router-link class ="btn float-end" to ="/user/Create" style="background-color: #77a0f8">
-                  Add User
+                  Add User/Superviseur/Admin
                 </router-link>
               </h5>
             </div>
@@ -132,12 +134,12 @@
       async logout() {
       try {
         // Envoyer une requête de déconnexion à votre API
-        await axios.post('http://localhost:8000/logout');
+        await axios.post('http://localhost:8000/api/logout');
 
         // Effectuer d'autres opérations après la déconnexion si nécessaire
 
         // Rediriger l'utilisateur vers la page de connexion ou une autre page
-        this.$router.push('/accueil');
+        this.$router.push('/login');
       } catch (error) {
         console.error('Erreur lors de la déconnexion :', error);
       }

@@ -5,26 +5,28 @@ import UserCreate from '@/components/Auth/UserCreate.vue'
 import UserEdit from '@/components/Auth/UserEdit.vue'
 import AccueilSuper from '@/components/Auth/AccueilSuper.vue'
 import AccueilAdmin from '@/components/Auth/AccueilAdmin.vue'
-import AccueilPage from '@/components/Auth/AccueilPage.vue'
+import AccueilUser from '@/components/Auth/AccueilUser.vue'
+// import AccueilPage from '@/components/Auth/AccueilPage.vue'
 import UserAbsences from '@/components/Auth/UserAbsences.vue'
 import MessageAdmin from '@/components/Auth/MessageAdmin.vue'
+import NotifSuper from '@/components/Auth/NotifSuper.vue'
 
 
 
 
 const routes = [
-  {
-    path: '/accueilPage',
-    name: 'accueilPage',
-    component: AccueilPage,
-    // meta: { auth: true } 
-  },
-  {
-    path: '/accueil',
-    name: 'accueilPage',
-    component: AccueilPage,
-    // meta: { auth: true } 
-  },
+  // {
+  //   path: '/accueilPage',
+  //   name: 'accueilPage',
+  //   component: AccueilPage,
+  //   // meta: { auth: true } 
+  // },
+  // {
+  //   path: '/accueil',
+  //   name: 'accueilPage',
+  //   component: AccueilPage,
+  //   // meta: { auth: true } 
+  // },
   {
     path: '/login',
     name: 'loginPage',
@@ -43,6 +45,13 @@ const routes = [
     name: 'accueilAdmin',
     component: AccueilAdmin,
     meta: { auth: true } 
+  },
+  
+  {
+    path: '/accueilUser',
+    name: 'accueilUser',
+    component: AccueilUser,
+    // meta: { auth: true }  
   },
   {
     path: '/user/Create',
@@ -66,6 +75,12 @@ const routes = [
     path:'/MessageAdmin',
     name: 'MessageAdmin',
     component: MessageAdmin
+  },
+  {
+    // path: '/Super/:id/edit',
+    path:'/super/notif',
+    name: 'NotifSuper',
+    component: NotifSuper
   },
   
 ]

@@ -51,8 +51,8 @@
 </template>
 
 <script>
-
-    import axios from 'axios'
+/* eslint-disable */
+import { userEdit } from '@/services/user.service.js'
 
     export default{
         name:"userEdit",
@@ -83,7 +83,7 @@
             var mythis = this;
             axios.get('http://127.0.0.1:8000/api/admin/update-user/${this.userId}')
                 .then(res =>{
-                    console.log(res.data.user);
+                    alert(res.data.user);
 
                     this.model.user.name = res.data.user.name
                 })
